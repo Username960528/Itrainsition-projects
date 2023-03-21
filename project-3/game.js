@@ -24,7 +24,7 @@ class GameRules {
   compareMoves(move1, move2) {
     const index1 = this.moves.indexOf(move1);
     const index2 = this.moves.indexOf(move2);
-    const diff = (index1 - index2 + this.moves.length) % this.moves.length;
+    const diff = (index2 - index1 + this.moves.length) % this.moves.length;
     return diff === 0 ? 'draw' : diff <= Math.floor(this.moves.length / 2) ? 'lose' : 'win';
   }
 }
