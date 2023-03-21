@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const prompt = require('prompt-sync')({ sigint: true });
-const Table = require('cli-table');
+const table = require('cli-table');
 const chalk = require('chalk');
 
   
