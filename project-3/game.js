@@ -2,6 +2,10 @@ const crypto = require('crypto');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const prompt = require('prompt-sync')({ sigint: true });
+const Table = require('cli-table');
+const chalk = require('chalk');
+
+  
 
 class CryptoHelper {
   static generateKey() {
@@ -61,10 +65,35 @@ class TableHelper {
 
   displayTable() {
     const table = this.generateTable();
-    for (const row of table) {
-      console.log(row.join(' | '));
+    const header = table[0];
+    const colWidths = header.map(() => 10);
+  
+    const cliTable = new Table({
+      head: header.map((text) => chalk.bold.cyan(text)),
+      colWidths: colWidths,
+    });
+  
+    for (let i = 1; i < table.length; i++) {
+      const row = table[i].map((text, index) => {
+        if (index === 0) {
+          return chalk.bold.yellow(text);
+        }
+        if (text === 'Win') {
+          return chalk.green(text);
+        } else if (text === 'Lose') {
+          return chalk.red(text);
+        } else {
+          return chalk.blue(text);
+        }
+      });
+      cliTable.push(row);
     }
+  
+    console.log(cliTable.toString());
   }
+  
+  
+  
 }
 
 
