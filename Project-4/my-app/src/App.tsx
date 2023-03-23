@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import UserTable from './components/UserTable';
 import Toolbar from './components/Toolbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
